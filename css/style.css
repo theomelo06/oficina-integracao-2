@@ -1,0 +1,227 @@
+:root {
+  --bg: #fafaf8;
+  --text: #22242a;
+  --muted: #6b7280;
+  --accent: #b8481e;
+  --accent-dark: #8f3616;
+  --border: #e5e2da;
+  --card-bg: #ffffff;
+  --max-width: 760px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: "Georgia", "Iowan Old Style", serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+/* Header */
+.site-header {
+  border-bottom: 1px solid var(--border);
+  background: var(--card-bg);
+}
+
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 20px;
+  max-width: var(--max-width);
+}
+
+.logo {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 1.2rem;
+  text-decoration: none;
+  color: var(--text);
+  letter-spacing: 0.5px;
+}
+
+.logo span {
+  color: var(--accent);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--muted);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.95rem;
+}
+
+nav a:hover {
+  color: var(--accent);
+}
+
+/* Hero */
+.hero {
+  padding: 56px 0 40px;
+  border-bottom: 1px solid var(--border);
+}
+
+.hero h1 {
+  font-size: 2.1rem;
+  margin: 0 0 12px;
+}
+
+.hero p {
+  color: var(--muted);
+  font-size: 1.05rem;
+  margin: 0;
+  max-width: 560px;
+}
+
+/* Main */
+main.container {
+  padding: 48px 20px 60px;
+}
+
+.section-title {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+/* Post list / cards */
+.post-list {
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.post-card {
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--border);
+}
+
+.post-card:last-child {
+  border-bottom: none;
+}
+
+.post-date {
+  display: block;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.8rem;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.post-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.35rem;
+}
+
+.post-card h3 a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card h3 a:hover {
+  color: var(--accent);
+}
+
+.post-card p {
+  color: var(--muted);
+  margin: 0 0 10px;
+}
+
+.read-more {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.read-more:hover {
+  color: var(--accent-dark);
+}
+
+/* Individual page / post */
+.page h1 {
+  font-size: 2rem;
+  margin-top: 8px;
+}
+
+.page h2 {
+  font-size: 1.3rem;
+  margin-top: 32px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+.post-full .post-date {
+  margin-bottom: 4px;
+}
+
+.post-nav {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 48px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border);
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.9rem;
+}
+
+.post-nav a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.post-nav a:hover {
+  color: var(--accent-dark);
+}
+
+/* Footer */
+.site-footer {
+  border-top: 1px solid var(--border);
+  padding: 24px 0;
+  margin-top: 40px;
+}
+
+.site-footer p {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .header-inner { flex-direction: column; gap: 10px; align-items: flex-start; }
+  .hero h1 { font-size: 1.6rem; }
+}
