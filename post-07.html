@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 7 — Desenvolvimento do front-end e back-end</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">30 de setembro de 2026</span>
+      <h1>Semana 7 — Desenvolvimento do front-end e back-end</h1>
+
+      <p>
+        Nesta etapa, começamos a desenvolver a aplicação
+        que será usada para fazer os pedidos. Dividimos
+        o software em duas partes: o front-end, com a
+        interface que aparece para o usuário, e o back-end,
+        responsável por receber e conferir os dados da receita.
+      </p>
+
+      <h2>Montando a interface</h2>
+
+      <p>
+        O front-end foi organizado na pasta BEBER-front,
+        usando HTML, CSS e JavaScript no VS Code.
+        A primeira versão tem uma proposta simples:
+        permitir a escolha dos ingredientes e enviar
+        o pedido pelo botão de preparo.
+      </p>
+
+      <p>
+        A interface reúne campos para as quantidades de
+        whey, leite em pó e água, além da seleção entre
+        cinco sabores: chocolate, morango, baunilha,
+        cookies e morango com chocolate. Também reservamos
+        um espaço para mostrar mensagens sobre o envio
+        do pedido e possíveis erros.
+      </p>
+
+      <p>
+        Neste início, a prioridade é deixar o fluxo fácil
+        de entender. O usuário precisa conseguir selecionar
+        a receita, conferir as quantidades e saber se
+        o pedido foi aceito.
+      </p>
+
+      <h2>Criando a API</h2>
+
+      <p>
+        Para o back-end, começamos uma API em C# com
+        ASP.NET Core, desenvolvida no Visual Studio.
+        O projeto ficou separado na pasta BEBER.Api,
+        dentro do mesmo repositório da aplicação.
+      </p>
+
+      <p>
+        Criamos uma rota para receber a receita personalizada.
+        Ao clicar em preparar, o JavaScript reúne os valores
+        do formulário e envia uma requisição HTTP com
+        os dados em JSON. A API recebe essas informações
+        e as transforma em um objeto que pode ser
+        validado pelo código em C#.
+      </p>
+
+      <h2>Conferindo o pedido</h2>
+
+      <p>
+        A validação é importante para impedir que valores
+        inválidos sigam para a máquina. Entram nessa
+        conferência as quantidades dos ingredientes,
+        o volume de água e o sabor selecionado.
+        Quando algum valor não atende às regras,
+        a API deve devolver uma mensagem que ajude
+        o usuário a corrigir a receita.
+      </p>
+
+      <p>
+        Também precisamos diferenciar as etapas:
+        receber uma receita na API não significa que
+        a bebida está pronta. A confirmação do preparo
+        dependerá das informações enviadas pelo ESP32
+        durante a execução.
+      </p>
+
+      <h2>Preparando a comunicação com a máquina</h2>
+
+      <p>
+        A API será a ligação entre a interface e o ESP32.
+        Depois de conferir a receita, ela deverá encaminhar
+        os dados ao firmware pela rede Wi-Fi local e
+        tratar a resposta recebida.
+      </p>
+
+      <p>
+        Essa divisão permite trabalhar na interface e
+        nas regras do pedido antes de ter todos os
+        componentes físicos funcionando. Por enquanto,
+        o foco está no caminho entre formulário,
+        requisição e resposta.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Vamos melhorar as mensagens da interface,
+        testar receitas válidas e inválidas e preparar
+        a integração com o firmware. A ideia é manter
+        o formato dos dados bem definido para que
+        a API e o ESP32 entendam o mesmo pedido.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-06.html">← Post anterior</a>
+      <a href="post-08.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

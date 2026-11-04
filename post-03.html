@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 3 — Escolhendo os componentes da máquina</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">2 de setembro de 2026</span>
+      <h1>Semana 3 — Escolhendo os componentes da máquina</h1>
+
+      <p>
+        Nesta etapa, a ideia começou a ganhar uma lista de peças.
+        Escolhemos os componentes pensando no que cada parte da máquina
+        precisa fazer: transportar os pós, adicionar água, misturar e
+        receber os pedidos. A lista ficou registrada na proposta do
+        projeto e vai orientar a montagem.
+      </p>
+
+      <h2>Controle e dosagem dos pós</h2>
+
+      <p>
+        Para coordenar o sistema, escolhemos o ESP32 WROOM, que também
+        permite a comunicação por Wi-Fi. Cada uma das seis roscas será
+        movimentada por um motor de passo 28BYJ-48 com driver ULN2003.
+        A ideia é controlar o giro de cada motor e, depois de calibrar
+        os dosadores, relacionar esse movimento à quantidade de pó.
+      </p>
+
+      <p>
+        Como os seis motores precisam de várias saídas, também
+        selecionamos três CIs 74HC595. Ligados em sequência, eles
+        permitem enviar os sinais usando apenas três pinos do ESP32.
+        A lista inclui um conversor de nível lógico para adequar a
+        comunicação entre os circuitos de 3,3 V e 5 V.
+      </p>
+
+      <h2>Água, mistura e presença do copo</h2>
+
+      <ul>
+        <li>
+          <strong>Água:</strong> bomba RS-385 de 12 V e 2 m de
+          mangueira de silicone de 6 × 8,5 mm.
+        </li>
+        <li>
+          <strong>Mistura:</strong> ventoinha DC de 12 V, com
+          90 × 90 × 25 mm, dois ímãs de neodímio N42 de
+          12,5 × 2 mm e um peixe magnético de 7 × 30 mm.
+        </li>
+        <li>
+          <strong>Acionamento:</strong> módulo relé de dois canais
+          com comando de 3,3 V para a bomba e a ventoinha.
+        </li>
+        <li>
+          <strong>Detecção:</strong> sensor infravermelho TCRT5000
+          para verificar se o copo está no lugar.
+        </li>
+      </ul>
+
+      <p>
+        A mistura magnética é uma das partes que mais precisam de
+        teste. A proposta é girar os ímãs abaixo do copo para
+        movimentar o peixe magnético dentro da bebida, sem colocar
+        um eixo atravessando o recipiente.
+      </p>
+
+      <h2>Alimentação e estrutura</h2>
+
+      <p>
+        Selecionamos duas fontes, uma de 5 V e outra de 12 V,
+        ambas de 3 A. A separação acompanha as tensões dos
+        componentes, mas ainda precisamos conferir o consumo real
+        das cargas e quais poderão funcionar ao mesmo tempo.
+      </p>
+
+      <p>
+        Para a montagem, a lista inclui três peças de MDF de
+        120 × 100, com 6 mm de espessura; uma peça de acrílico de
+        10 × 10, com 2 mm de espessura; três placas de circuito
+        de 10 × 10 cm; e um funil de inox de 27 mm.
+        Também foram relacionados 1 m de tubo PVC de 1/2″
+        (20 mm) e seis conexões em T. A presença dessas peças
+        na lista não muda a ideia de direcionar o pó das
+        roscas diretamente ao funil.
+      </p>
+
+      <p>
+        A estimativa total registrada no relatório é de
+        <strong>R$ 581,47</strong>. Esse valor é uma previsão
+        de materiais, e não uma confirmação do gasto final.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Com os componentes escolhidos, vamos conferir os encaixes,
+        organizar as ligações e planejar os testes de cada módulo.
+        Antes de juntar tudo, precisamos entender como motores,
+        bomba e mistura se comportam separadamente.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-02.html">← Post anterior</a>
+      <a href="post-04.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

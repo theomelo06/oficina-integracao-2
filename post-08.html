@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 8 — Código inicial do firmware</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">7 de outubro de 2026</span>
+      <h1>Semana 8 — Código inicial do firmware</h1>
+
+      <p>
+        Com o desenvolvimento da aplicação encaminhado,
+        começamos a organizar o código que vai rodar
+        no ESP32. O firmware será responsável por receber
+        os pedidos e coordenar os componentes físicos
+        da máquina.
+      </p>
+
+      <h2>Organizando o código</h2>
+
+      <p>
+        O desenvolvimento está sendo feito em C++,
+        usando o ambiente Arduino para compilar e
+        gravar o programa na placa. Separamos as
+        responsabilidades em arquivos .cpp e .hpp
+        para facilitar os ajustes e evitar concentrar
+        todo o funcionamento em um único arquivo.
+      </p>
+
+      <p>
+        A estrutura inicial contempla a conexão Wi-Fi,
+        o recebimento de pedidos e os módulos ligados
+        aos motores, à bomba, ao misturador e ao sensor
+        de presença do copo. Essa organização permite
+        desenvolver e testar cada parte aos poucos.
+      </p>
+
+      <h2>Conectando o ESP32 à rede</h2>
+
+      <p>
+        Uma das primeiras tarefas do firmware é conectar
+        o ESP32 à rede Wi-Fi. Nesta versão inicial,
+        o nome da rede e a senha são configurados
+        no código. Depois da conexão, o endereço IP
+        da placa é mostrado no monitor serial.
+      </p>
+
+      <p>
+        Esse endereço será usado pela API para localizar
+        o ESP32. Para os testes locais, o computador
+        que executa o back-end e a placa precisam estar
+        em uma rede que permita a comunicação entre eles.
+      </p>
+
+      <h2>Recebendo a receita</h2>
+
+      <p>
+        A base da comunicação é um servidor HTTP
+        executado no ESP32. A API envia uma requisição
+        com o pedido em JSON, contendo as quantidades
+        dos ingredientes e o sabor escolhido.
+      </p>
+
+      <p>
+        O firmware precisa ler o corpo dessa requisição,
+        interpretar os campos e conferir se as informações
+        necessárias estão presentes. Mesmo com a validação
+        no back-end, a placa também deve verificar
+        os dados antes de permitir qualquer acionamento.
+      </p>
+
+      <p>
+        Neste primeiro momento, o foco é receber
+        corretamente a receita e devolver uma resposta
+        para a API. Essa resposta confirma o recebimento
+        do pedido; ela ainda não representa a conclusão
+        do preparo da bebida.
+      </p>
+
+      <h2>Preparando o controle dos componentes</h2>
+
+      <p>
+        A próxima parte é ligar os dados recebidos
+        às ações da máquina. A quantidade de pó
+        precisará ser convertida em acionamento dos
+        motores, enquanto o volume de água dependerá
+        da calibração da bomba.
+      </p>
+
+      <p>
+        Também estamos planejando a sequência de preparo:
+        verificar o copo, dosar os ingredientes,
+        adicionar água e realizar a mistura.
+        O sistema deverá impedir um novo pedido
+        enquanto estiver ocupado e manter os
+        atuadores desligados na inicialização.
+      </p>
+
+      <p>
+        Outro cuidado será evitar esperas longas
+        que impeçam o firmware de atender à comunicação
+        e verificar o sensor durante o funcionamento.
+        Essa parte ganhará mais atenção conforme
+        os módulos forem integrados.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Vamos testar o envio de receitas da API para
+        a placa, conferir as respostas e iniciar
+        os testes individuais dos atuadores.
+        A partir daí, poderemos integrar a sequência
+        de preparo com os parâmetros obtidos
+        na calibração.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-07.html">← Post anterior</a>
+      <a href="post-09.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

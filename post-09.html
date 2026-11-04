@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 9 — Aperfeiçoando o software</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">14 de outubro de 2026</span>
+      <h1>Semana 9 — Aperfeiçoando o software</h1>
+
+      <p>
+        Com as primeiras versões da aplicação e do firmware
+        organizadas, continuamos trabalhando nos ajustes
+        entre as três partes do sistema: front-end,
+        back-end e ESP32. O foco agora é fazer o pedido
+        percorrer esse caminho de forma consistente
+        e deixar mais claro o que acontece em cada etapa.
+      </p>
+
+      <h2>Ajustes na interface</h2>
+
+      <p>
+        No front-end, seguimos melhorando a organização
+        dos campos de ingredientes, a seleção do sabor
+        e as mensagens exibidas ao usuário. A ideia
+        é que a pessoa consiga montar a receita
+        sem ficar em dúvida sobre as quantidades
+        ou sobre o resultado do envio.
+      </p>
+
+      <p>
+        Também estamos cuidando do comportamento
+        do botão de preparo durante a requisição.
+        Enquanto o pedido está sendo enviado,
+        a interface deve indicar que está aguardando
+        uma resposta e evitar cliques repetidos.
+        Essa medida ajuda no uso, mas o controle
+        de pedidos também precisa existir na API
+        e no firmware.
+      </p>
+
+      <h2>Validação e respostas da API</h2>
+
+      <p>
+        No back-end, continuamos revisando as regras
+        da receita e o tratamento das respostas.
+        Quando uma quantidade está fora dos limites,
+        a mensagem deve chegar ao front-end de forma
+        compreensível, permitindo corrigir o pedido.
+      </p>
+
+      <p>
+        Outro ponto é diferenciar uma receita inválida
+        de uma falha de comunicação. Se o ESP32
+        estiver desconectado ou não responder,
+        o usuário precisa receber essa informação,
+        sem uma confirmação de sucesso indevida.
+      </p>
+
+      <h2>Comunicação com o firmware</h2>
+
+      <p>
+        No ESP32, os ajustes estão concentrados
+        na conexão Wi-Fi, na leitura das requisições
+        HTTP e na interpretação do JSON recebido.
+        Estamos alinhando os nomes e os tipos
+        dos campos para que a receita enviada
+        pela API seja entendida corretamente
+        pelo firmware.
+      </p>
+
+      <p>
+        As mensagens no monitor serial ajudam
+        a acompanhar esse processo, mostrando
+        a conexão com a rede e os dados recebidos.
+        Assim, fica mais fácil identificar se
+        um problema está no envio, na leitura
+        do pedido ou no tratamento das informações.
+      </p>
+
+      <h2>Separando recebimento e execução</h2>
+
+      <p>
+        Um cuidado importante é não confundir
+        a confirmação de recebimento com
+        a conclusão do preparo. O ESP32 pode
+        reconhecer um pedido antes de iniciar
+        qualquer motor, e a aplicação precisa
+        representar essas situações separadamente.
+      </p>
+
+      <p>
+        Também seguimos organizando o firmware
+        para que o controle dos componentes
+        possa ser integrado à comunicação.
+        A intenção é manter o sistema capaz
+        de verificar o copo e atender às consultas
+        de estado durante o funcionamento.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Vamos continuar os testes de comunicação,
+        incluindo pedidos inválidos e situações
+        de desconexão. Com esse caminho mais estável,
+        poderemos avançar na integração entre
+        as receitas e os acionamentos físicos
+        da máquina.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-08.html">← Post anterior</a>
+      <a href="post-10.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html> 

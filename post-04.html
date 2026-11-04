@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 4 — Definindo como o B.E.B.E.R. vai funcionar</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">9 de setembro de 2026</span>
+      <h1>Semana 4 — Definindo como o B.E.B.E.R. vai funcionar</h1>
+
+      <p>
+        Depois da escolha dos componentes, o próximo passo foi
+        organizar como tudo deve funcionar junto. A proposta do
+        B.E.B.E.R. reúne o caminho dos ingredientes, a interação
+        com o usuário e os cuidados necessários para transformar
+        um pedido em uma bebida.
+      </p>
+
+      <h2>Do pedido ao copo</h2>
+
+      <p>
+        A ideia é que o usuário escolha o sabor e as quantidades,
+        coloque o copo e inicie o preparo. Os pós saem das roscas
+        e seguem para um funil, que concentra os ingredientes
+        no recipiente central. A bomba adiciona água e o
+        mecanismo magnético faz a mistura.
+      </p>
+
+      <p>
+        O projeto busca tornar esse processo mais prático e
+        repetível, com possibilidade de uso pessoal e,
+        futuramente, em uma máquina de venda. A proposta também
+        inclui acompanhar doses e estoque, mas a forma de medir
+        ou estimar essas informações ainda precisa ser detalhada.
+        Limpeza automática, fabricação de recipientes e
+        aquecimento de líquidos ficam fora do escopo.
+      </p>
+
+      <h2>Como o aplicativo conversa com a máquina</h2>
+
+      <p>
+        A interface será feita com HTML, CSS e JavaScript.
+        Ela envia a receita para uma aplicação em C#,
+        responsável por conferir os dados e encaminhar o pedido
+        ao ESP32. A comunicação será por HTTP na rede Wi-Fi local,
+        usando JSON para transportar as informações dos ingredientes.
+      </p>
+
+      <p>
+        No ESP32, o firmware em C++ ficará responsável pelo
+        controle físico da máquina. A proposta é organizar
+        o preparo em estados, como “aguardando copo”, “dosando”,
+        “adicionando água”, “misturando” e “finalizado”.
+        O aplicativo poderá consultar esses estados e solicitar
+        a interrupção do processo. Tudo isso deve funcionar
+        na rede local, sem depender de um servidor na internet.
+      </p>
+
+      <p>
+        O relatório também prevê armazenamento de receitas e
+        funcionalidades de pagamento como expansões. Já os
+        botões com sabores predefinidos aparecem como alternativa
+        ao aplicativo, mas precisamos alinhar esse ponto:
+        outra parte do documento coloca a escolha por botões
+        fora do escopo.
+      </p>
+
+      <h2>Cuidados que entram no planejamento</h2>
+
+      <ul>
+        <li>
+          Conferir a receita e a presença do copo antes de
+          iniciar os acionamentos.
+        </li>
+        <li>
+          Impedir um novo preparo enquanto a máquina já
+          estiver ocupada.
+        </li>
+        <li>
+          Usar circuitos de acionamento e proteção adequados,
+          sem alimentar as cargas pelos pinos do ESP32.
+        </li>
+        <li>
+          Manter água longe da eletrônica e proteger as
+          partes móveis.
+        </li>
+        <li>
+          Permitir a limpeza manual e a manutenção dos
+          módulos de forma acessível.
+        </li>
+      </ul>
+
+      <p>
+        A precisão da dosagem também precisa ser verificada
+        na prática. Vamos calibrar cada pó e a bomba,
+        comparar as quantidades obtidas e definir os limites
+        de erro com base nos testes.
+      </p>
+
+      <h2>O que ainda pode dar trabalho</h2>
+
+      <p>
+        A análise de riscos destaca a mistura magnética
+        insuficiente, o entupimento das roscas e as diferenças
+        entre os pós. Também precisamos observar a vazão da
+        bomba, as falhas de comunicação e a sequência dos
+        acionamentos. Por isso, o plano é testar os módulos
+        separadamente antes de partir para o preparo completo.
+      </p>
+
+      <p>
+        Essa organização reúne conteúdos de programação,
+        eletricidade, circuitos, eletrônica, comunicação de
+        dados, banco de dados e sistemas microcontrolados.
+        O cronograma divide o desenvolvimento entre mecânica,
+        hardware, software e integração, com registros no blog
+        e documentação para a apresentação final.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Vamos detalhar a estrutura e as conexões, manter o
+        blog atualizado e transformar os requisitos em
+        verificações simples. A prioridade é conseguir
+        avaliar cada parte e registrar o que precisa ser
+        ajustado antes de colocar a máquina inteira para
+        funcionar.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-03.html">← Post anterior</a>
+      <a href="post-05.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Semana 5 — Revisando a proposta</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        B.E.B.E.R<span style="font-size: 15px"> log</span>
+      </a>
+
+      <nav>
+        <ul>
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre o projeto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container page">
+    <a class="back-link" href="index.html">
+      ← Voltar para todas as postagens
+    </a>
+
+    <article class="post-full">
+      <span class="post-date">16 de setembro de 2026</span>
+      <h1>Semana 5 — Revisando a proposta</h1>
+
+      <p>
+        Depois da apresentação da proposta, recebemos algumas
+        sugestões do professor para melhorar o projeto e deixar
+        o documento mais claro. O prazo para atualizar a proposta
+        ficou para o dia 21/09, então organizamos os pontos que
+        precisavam de revisão.
+      </p>
+
+      <h2>Repensando o controle dos motores</h2>
+
+      <p>
+        Um dos principais pontos foi a quantidade de sinais
+        necessários para controlar os seis motores. A sugestão
+        foi estudar uma solução com multiplexação, buscando
+        reduzir de 24 para apenas 7 fios de controle.
+        Entre os componentes citados para essa análise estavam
+        os decodificadores da família 138, como o CD74HC138
+        e a alternativa 74LS138 TTL.
+      </p>
+
+      <p>
+        Essa possibilidade precisa ser conferida junto com
+        os drivers e a sequência de acionamento dos motores.
+        A redução dos sinais de controle não elimina as
+        conexões de alimentação nem os circuitos que
+        acionam as cargas.
+      </p>
+
+      <p>
+        Também entrou na revisão a possibilidade de usar
+        motores DC nos dosadores. Antes de decidir por uma
+        troca, precisamos comparar a montagem e o acionamento
+        com a facilidade de controlar e repetir a quantidade
+        de pó dispensada.
+      </p>
+
+      <h2>Sensor de copo e atualização do diagrama</h2>
+
+      <p>
+        Outro ajuste indicado foi substituir a ideia de
+        detecção por ultrassom pelo sensor infravermelho
+        TCRT5000. Ele ficará próximo ao copo para verificar
+        sua presença antes do início do preparo.
+      </p>
+
+      <p>
+        A Figura 1 também precisa ser refeita para representar
+        melhor as conexões e o funcionamento da máquina.
+        Além de atualizar os blocos, vamos ajustar seu tamanho
+        no relatório: o diagrama precisa ficar legível sem
+        exigir um zoom enorme para entender os textos.
+      </p>
+
+      <p>
+        Com essas mudanças, a tabela de componentes também
+        entrou na lista de revisão, para manter as peças,
+        quantidades e valores de acordo com a proposta.
+      </p>
+
+      <h2>Explicando a conexão com o site</h2>
+
+      <p>
+        Ficou faltando detalhar melhor como o pedido feito
+        pelo usuário chega à máquina. Vamos explicar esse
+        caminho no documento: a interface do site envia
+        os dados para a API em C#, que verifica a receita
+        e encaminha o pedido ao ESP32 pela rede Wi-Fi,
+        usando HTTP e mensagens em JSON.
+      </p>
+
+      <p>
+        O professor também sugeriu um display com botões
+        para permitir o uso quando o aplicativo não estiver
+        disponível. Essa opção entrou como ponto de avaliação,
+        já que envolve novos componentes e uma segunda forma
+        de selecionar a bebida.
+      </p>
+
+      <h2>Cronograma acessível</h2>
+
+      <p>
+        O cronograma estava em um link que pedia login,
+        o que acabou impedindo sua visualização pelo professor.
+        Vamos disponibilizá-lo em PDF para que ele possa
+        ser consultado diretamente, sem depender de acesso
+        a uma conta.
+      </p>
+
+      <h2>Próximos passos</h2>
+
+      <p>
+        Agora vamos consolidar essas revisões até o dia 21/09,
+        deixando claro o que foi definido e o que ainda
+        depende de avaliação. A ideia é seguir para a montagem
+        com uma proposta mais organizada e coerente com
+        os componentes escolhidos.
+      </p>
+    </article>
+
+    <nav class="post-nav" aria-label="Navegação entre postagens">
+      <a href="post-04.html">← Post anterior</a>
+      <a href="post-06.html">Próximo post →</a>
+    </nav>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>
+        Projeto de Oficina de Integração 2 — Engenharia de Computação
+        — UTFPR &middot; 2026
+      </p>
+    </div>
+  </footer>
+
+</body>
+</html>
