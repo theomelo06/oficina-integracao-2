@@ -7,7 +7,7 @@
   <link rel="stylesheet" href="css/style.css">
 
   <style>
-    .video-container {
+    .media-container {
       position: relative;
       width: 100%;
       aspect-ratio: 16 / 9;
@@ -17,7 +17,11 @@
       background: #eee;
     }
 
-    .video-container iframe {
+    .media-container.drawing {
+      aspect-ratio: 4 / 3;
+    }
+
+    .media-container iframe {
       position: absolute;
       inset: 0;
       width: 100%;
@@ -25,9 +29,25 @@
       border: 0;
     }
 
-    .video-link {
+    .media-link {
       margin-bottom: 28px;
       font-size: 0.95rem;
+    }
+
+    .project-files {
+      margin: 24px 0;
+      padding: 18px 20px;
+      border-left: 4px solid #b8481e;
+      background: #f2eee8;
+      border-radius: 4px;
+    }
+
+    .project-files p {
+      margin: 0 0 12px;
+    }
+
+    .project-files p:last-child {
+      margin-bottom: 0;
     }
   </style>
 </head>
@@ -128,7 +148,7 @@
         precisarão ser verificadas nesse conjunto.
       </p>
 
-      <div class="video-container">
+      <div class="media-container">
         <iframe
           src="https://drive.google.com/file/d/1uXZq0CADAiy2izzecGPEhPavlobk_QEq/preview"
           title="Teste individual do motor de passo do B.E.B.E.R."
@@ -138,7 +158,7 @@
         </iframe>
       </div>
 
-      <p class="video-link">
+      <p class="media-link">
         <a
           href="https://drive.google.com/file/d/1uXZq0CADAiy2izzecGPEhPavlobk_QEq/view"
           target="_blank"
@@ -168,7 +188,7 @@
         da máquina.
       </p>
 
-      <div class="video-container">
+      <div class="media-container">
         <iframe
           src="https://drive.google.com/file/d/19r8GO2It50FhU7jRraX6g460CbHgbRXU/preview"
           title="Teste individual do sensor TCRT5000 do B.E.B.E.R."
@@ -178,7 +198,7 @@
         </iframe>
       </div>
 
-      <p class="video-link">
+      <p class="media-link">
         <a
           href="https://drive.google.com/file/d/19r8GO2It50FhU7jRraX6g460CbHgbRXU/view"
           target="_blank"
@@ -207,17 +227,102 @@
         as saídas dos parafusos ao funil.
       </p>
 
+      <h2>Esquemático 2D</h2>
+
+      <p>
+        Como parte da documentação mecânica,
+        preparamos o desenho 2D apresentado abaixo.
+        Ele serve de referência para discutir
+        a estrutura e orientar os ajustes
+        necessários durante a montagem.
+      </p>
+
+      <div class="media-container drawing">
+        <iframe
+          src="https://drive.google.com/file/d/10GJaRES2I8JL54l-BgMrGgGcZES-Sn63/preview"
+          title="Esquemático 2D da estrutura do B.E.B.E.R."
+          loading="lazy"
+          allow="fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="media-link">
+        <a
+          href="https://drive.google.com/file/d/10GJaRES2I8JL54l-BgMrGgGcZES-Sn63/view"
+          target="_blank"
+          rel="noopener noreferrer">
+          Abrir o esquemático 2D no Google Drive ↗
+        </a>
+      </p>
+
+      <h2>Estrutura modelada em 3D</h2>
+
+      <p>
+        Também desenvolvemos a modelagem 3D
+        da estrutura. Essa representação ajuda
+        a visualizar o conjunto e a discutir
+        a organização das peças antes de
+        concluir a montagem física.
+      </p>
+
+      <p>
+        O modelo faz parte do planejamento
+        e ainda pode receber alterações.
+        Conforme avançamos nos encaixes e
+        na fixação dos componentes, os ajustes
+        precisam ser refletidos nos desenhos.
+      </p>
+
+      <div class="media-container drawing">
+        <iframe
+          src="https://drive.google.com/file/d/17BdQlRYk-ZF8JRWHc_nDZqwqszdYiqdH/preview"
+          title="Imagem da estrutura modelada em 3D do B.E.B.E.R."
+          loading="lazy"
+          allow="fullscreen"
+          allowfullscreen>
+        </iframe>
+      </div>
+
+      <p class="media-link">
+        <a
+          href="https://drive.google.com/file/d/17BdQlRYk-ZF8JRWHc_nDZqwqszdYiqdH/view"
+          target="_blank"
+          rel="noopener noreferrer">
+          Abrir a imagem da estrutura 3D no Google Drive ↗
+        </a>
+      </p>
+
+      <div class="project-files">
+        <p>
+          <strong>Arquivos do projeto</strong>
+        </p>
+        <p>
+          Os desenhos também estão disponíveis
+          em formato <strong>.dwg</strong>
+          na pasta compartilhada do Google Drive,
+          para download e consulta em software
+          compatível.
+        </p>
+        <p>
+          <a
+            href="https://drive.google.com/drive/folders/1-JYI-AB3yoheJwrcTAuxqWgqd_kAo0Af?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer">
+            Acessar a pasta com os desenhos do projeto ↗
+          </a>
+        </p>
+      </div>
+
+      <h2>O que falta integrar</h2>
+
       <p>
         A montagem ainda está em desenvolvimento.
         Entre os pontos de atenção estão
         o alinhamento entre motor e parafuso,
         a fixação das peças e o espaço necessário
         para organizar os módulos na estrutura.
-        Os protótipos permitem conferir esses
-        detalhes antes de fechar a montagem.
       </p>
-
-      <h2>O que falta integrar</h2>
 
       <p>
         Os testes individuais representam um avanço,
