@@ -3,36 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Semana 13 — Statecharts do software</title>
+  <title>Semana 13 — Revisão dos circuitos e ajustes no software</title>
   <link rel="stylesheet" href="css/style.css">
-
-  <style>
-    .statechart-figure {
-      margin: 24px 0 32px;
-    }
-
-    .statechart-viewer {
-      width: 100%;
-      height: clamp(360px, 65vh, 650px);
-      overflow: hidden;
-      border: 1px solid #ddd;
-      border-radius: 8px;
-      background: #f2f2f2;
-    }
-
-    .statechart-viewer iframe {
-      display: block;
-      width: 100%;
-      height: 100%;
-      border: 0;
-    }
-
-    .statechart-figure figcaption {
-      margin-top: 10px;
-      font-size: 0.9rem;
-      line-height: 1.5;
-    }
-  </style>
 </head>
 <body>
 
@@ -57,259 +29,129 @@
     </a>
 
     <article class="post-full">
-      <span class="post-date">25 de novembro de 2026</span>
-      <h1>Semana 13 — Statecharts do software</h1>
+      <span class="post-date">18 de novembro de 2026</span>
+      <h1>Semana 13 — Revisão dos circuitos e ajustes no software</h1>
 
       <p>
-        Nesta etapa, elaboramos os statecharts do
-        software do B.E.B.E.R. A ideia foi representar
-        os estados do sistema, os eventos que provocam
-        mudanças e as condições necessárias para
-        cada transição acontecer.
+        Nesta etapa, voltamos aos circuitos e ao
+        software para revisar os detalhes que ainda
+        precisavam de atenção. Com os módulos sendo
+        desenvolvidos separadamente, esse momento
+        ajuda a conferir se as ligações e os dados
+        trocados entre as partes continuam coerentes.
+      </p>
+
+      <h2>Revisão dos circuitos</h2>
+
+      <p>
+        A revisão dos circuitos teve como foco
+        as ligações entre o ESP32, os drivers,
+        os motores, a bomba, o misturador
+        e o sensor de presença do copo.
+        A ideia é conferir os sinais de controle
+        e a alimentação antes de avançar
+        na montagem integrada.
       </p>
 
       <p>
-        Dividimos a documentação em cinco diagramas,
-        envolvendo o gerenciamento dos pedidos,
-        a rotina de preparo, a comunicação da ESP,
-        o front-end e o back-end. Assim, conseguimos
-        explicar cada parte sem colocar todo
-        o funcionamento em uma única figura.
-      </p>
-
-      <h2>Gerenciamento de pedidos da ESP</h2>
-
-      <p>
-        O primeiro statechart mostra como a ESP
-        gerencia a disponibilidade da máquina.
-        Os estados foram agrupados em dois
-        conjuntos principais: disponível e ocupada.
-        Um pedido aceito reserva a máquina,
-        que volta a ficar disponível quando
-        a rotina termina ou ocorre um erro
-        de interpretação.
+        Entre os pontos de atenção estão
+        a identificação dos pinos, as tensões
+        utilizadas e a referência de GND
+        dos circuitos. Também estamos considerando
+        a organização dos fios e das conexões
+        para facilitar os testes e a identificação
+        de problemas.
       </p>
 
       <p>
-        Esse diagrama também ajuda a explicar
-        por que um novo pedido não deve começar
-        enquanto outro está em execução,
-        independentemente de ter vindo pelo
-        site ou pelos botões físicos.
+        Essa revisão ainda não significa que
+        todo o hardware foi validado em conjunto.
+        Os testes individuais continuam sendo
+        a base para avaliar cada módulo
+        antes de executar a sequência completa.
       </p>
 
-      <figure class="statechart-figure">
-        <div class="statechart-viewer">
-          <iframe
-            src="https://drive.google.com/file/d/19Ooouo_b1yHlh2DUbpDM6-ceohHo6kaS/preview"
-            title="Statechart de gerenciamento de pedidos da ESP"
-            loading="lazy"
-            allow="fullscreen"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <figcaption>
-          Figura 1 — Gerenciamento de pedidos da ESP.
-          <a
-            href="https://drive.google.com/file/d/19Ooouo_b1yHlh2DUbpDM6-ceohHo6kaS/view"
-            target="_blank"
-            rel="noopener noreferrer">
-            Abrir e ampliar no Drive ↗
-          </a>
-        </figcaption>
-      </figure>
-
-      <h2>O que acontece durante o preparo</h2>
+      <h2>Ajustes no back-end</h2>
 
       <p>
-        O segundo diagrama detalha o estado
-        “preparando”. Ele apresenta a espera
-        pela confirmação do copo, a adição
-        de água, a dosagem dos pós e
-        o funcionamento do misturador.
+        Na API em C#, o trabalho está concentrado
+        na validação das receitas e no tratamento
+        da comunicação com a ESP. Além de conferir
+        os ingredientes, precisamos diferenciar
+        um pedido recusado de uma falha
+        de conexão com a máquina.
       </p>
 
       <p>
-        As diferenças entre as receitas também
-        aparecem nesse detalhamento, como
-        a Power Dose, que não utiliza Ninho.
-        No código atual, essas etapas são
-        executadas por uma rotina sequencial
-        com funções e temporizações. Portanto,
-        o diagrama representa o funcionamento
-        interno do preparo, enquanto o status
-        externo permanece como “preparando”.
+        Também estamos alinhando os campos
+        das mensagens em JSON e as respostas
+        usadas pela aplicação. A confirmação
+        de recebimento deve indicar apenas
+        que o pedido foi aceito, sem dar
+        a entender que a bebida já está pronta.
       </p>
 
-      <figure class="statechart-figure">
-        <div class="statechart-viewer">
-          <iframe
-            src="https://drive.google.com/file/d/19dUrW4i1S0ZSCm6RHl7uxbBLEi3CkPXP/preview"
-            title="Statechart do detalhamento do preparo na ESP"
-            loading="lazy"
-            allow="fullscreen"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <figcaption>
-          Figura 2 — Detalhamento do preparo na ESP.
-          <a
-            href="https://drive.google.com/file/d/19dUrW4i1S0ZSCm6RHl7uxbBLEi3CkPXP/view"
-            target="_blank"
-            rel="noopener noreferrer">
-            Abrir e ampliar no Drive ↗
-          </a>
-        </figcaption>
-      </figure>
-
-      <h2>Comunicação durante o preparo</h2>
+      <h2>Lapidando a interface</h2>
 
       <p>
-        O terceiro statechart representa a
-        concorrência entre a comunicação HTTP
-        e o controle do preparo. A ESP precisa
-        continuar respondendo às consultas
-        da aplicação mesmo enquanto executa
-        a rotina dos componentes.
+        No front-end, seguimos ajustando
+        a seleção de sabores, os campos
+        de quantidades e as mensagens
+        apresentadas ao usuário. O objetivo
+        é deixar o pedido fácil de montar
+        e tornar os limites dos ingredientes
+        mais claros.
       </p>
 
       <p>
-        Para isso, o atendimento HTTP fica
-        em uma tarefa separada. As duas
-        partes compartilham informações,
-        como o pedido pendente e a ocupação,
-        com acesso protegido por mutex.
-        Isso permite acompanhar a máquina
-        sem alterar toda a sequência
-        de acionamentos já desenvolvida.
+        Outro cuidado é o comportamento
+        da interface durante o envio:
+        indicar que uma resposta está
+        sendo aguardada e evitar cliques
+        repetidos no botão de preparo.
+        As mensagens de erro também precisam
+        ajudar o usuário a entender
+        o que deve ser corrigido.
       </p>
 
-      <figure class="statechart-figure">
-        <div class="statechart-viewer">
-          <iframe
-            src="https://drive.google.com/file/d/1eThU2AR4KuqzuNoON_WnBct2eL41p9wy/preview"
-            title="Statechart de comunicação durante o preparo"
-            loading="lazy"
-            allow="fullscreen"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <figcaption>
-          Figura 3 — Comunicação e controle do preparo.
-          <a
-            href="https://drive.google.com/file/d/1eThU2AR4KuqzuNoON_WnBct2eL41p9wy/view"
-            target="_blank"
-            rel="noopener noreferrer">
-            Abrir e ampliar no Drive ↗
-          </a>
-        </figcaption>
-      </figure>
-
-      <h2>Estados do front-end</h2>
+      <h2>Alinhando as partes do sistema</h2>
 
       <p>
-        Na interface, o statechart mostra
-        a consulta de disponibilidade,
-        o envio da receita e o acompanhamento
-        da ocupação. Também estão representadas
-        as situações em que o envio deve
-        ficar bloqueado, como uma falha
-        de comunicação ou um preparo em andamento.
+        Os ajustes no front e no back
+        precisam acompanhar o firmware.
+        Por isso, estamos revisando o caminho
+        do pedido desde o formulário
+        até o recebimento pela ESP,
+        mantendo os nomes dos campos,
+        os sabores e as quantidades
+        consistentes entre as três partes.
       </p>
 
       <p>
-        Outro ponto é o pedido sem confirmação:
-        perder a resposta não significa
-        que a ESP deixou de receber a receita.
-        A interface precisa consultar o estado
-        antes de permitir outro envio,
-        evitando uma repetição indevida.
+        Esse alinhamento também prepara
+        o acompanhamento da disponibilidade
+        da máquina. Não basta bloquear
+        o botão no navegador: o controle
+        do pedido precisa considerar
+        o que está acontecendo na ESP.
       </p>
-
-      <figure class="statechart-figure">
-        <div class="statechart-viewer">
-          <iframe
-            src="https://drive.google.com/file/d/1xGmK0TJR2A1sQS0eQzehV49KdySvuA4r/preview"
-            title="Statechart do front-end do BEBER"
-            loading="lazy"
-            allow="fullscreen"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <figcaption>
-          Figura 4 — Estados da interface de pedidos.
-          <a
-            href="https://drive.google.com/file/d/1xGmK0TJR2A1sQS0eQzehV49KdySvuA4r/view"
-            target="_blank"
-            rel="noopener noreferrer">
-            Abrir e ampliar no Drive ↗
-          </a>
-        </figcaption>
-      </figure>
-
-      <h2>Processamento no back-end</h2>
-
-      <p>
-        O último diagrama acompanha uma
-        requisição na API em C#: validação
-        dos dados, consulta de ocupação,
-        encaminhamento à ESP e tratamento
-        da resposta.
-      </p>
-
-      <p>
-        Ele diferencia uma recusa por dados
-        inválidos de uma falha de comunicação.
-        Também separa a confirmação de recebimento
-        da conclusão do preparo. Esse statechart
-        representa o ciclo de uma requisição;
-        o estado real da máquina continua
-        sendo controlado pela ESP.
-      </p>
-
-      <figure class="statechart-figure">
-        <div class="statechart-viewer">
-          <iframe
-            src="https://drive.google.com/file/d/11ibb0oBvuFUY_LKqhTFOGad_q0n1aROw/preview"
-            title="Statechart do processamento de pedidos no back-end"
-            loading="lazy"
-            allow="fullscreen"
-            allowfullscreen>
-          </iframe>
-        </div>
-
-        <figcaption>
-          Figura 5 — Processamento de pedidos no back-end.
-          <a
-            href="https://drive.google.com/file/d/11ibb0oBvuFUY_LKqhTFOGad_q0n1aROw/view"
-            target="_blank"
-            rel="noopener noreferrer">
-            Abrir e ampliar no Drive ↗
-          </a>
-        </figcaption>
-      </figure>
 
       <h2>Próximos passos</h2>
 
       <p>
-        Vamos usar os diagramas como referência
-        para conferir os testes do software,
-        incluindo pedidos válidos e inválidos,
-        máquina ocupada e perda de comunicação.
-        Conforme a integração avançar,
-        também vamos atualizar os statecharts
-        para manter a documentação alinhada
-        ao comportamento implementado.
+        Vamos continuar os testes de comunicação,
+        revisar os pontos pendentes dos circuitos
+        e documentar o comportamento do software
+        por meio de statecharts. Esses diagramas
+        vão ajudar a explicar os estados,
+        as condições e as transições
+        de cada parte do sistema.
       </p>
     </article>
 
     <nav class="post-nav" aria-label="Navegação entre postagens">
       <a href="post-12.html">← Post anterior</a>
-      <a href="index.html">Todas as postagens →</a>
+      <a href="post-14.html">Próximo post →</a>
     </nav>
   </main>
 
